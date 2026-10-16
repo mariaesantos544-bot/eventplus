@@ -17,9 +17,9 @@ function Eventos() {
 
     const categorias = [
         "Todos",
-        "Workshop",
-        "Palestra - 1",
-        "Feira Senai"
+        "Tecnologia",
+        "Design",
+        "Programação"
     ];
 
     useEffect(() => {
