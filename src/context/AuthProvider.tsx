@@ -87,7 +87,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
             .finally(() => setCarregandoSessao(false));
     }, []);
 
-    const perfil = session?.usuario.idTipoUsuarioNavigation.titulo.toLowerCase() ?? "";
+    const perfil = session?.usuario?.idTipoUsuarioNavigation?.titulo?.toLowerCase() ?? "";
 
     return (
         <AuthContext.Provider
@@ -99,7 +99,8 @@ export function AuthProvider({ children }: PropsWithChildren) {
                 carregandoSessao,
                 login,
                 logout,
-                atualizarUsuario}}>
+                atualizarUsuario
+            }}>
             {children}
         </AuthContext.Provider>
     );

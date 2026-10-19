@@ -1,14 +1,14 @@
 import "./Home.css";
 
-import bannerEvento1 from "../../assets/banner-1.png"
-import bannerEvento2 from "../../assets/banner-2.png"
-import bannerEvento3 from "../../assets/banner-3.png"
-import visaoImg from "../../assets/visao-img.png"
+import bannerEvento1 from "../../../assets/banner-1.png";
+import bannerEvento2 from "../../../assets/banner-2.png";
+import bannerEvento3 from "../../../assets/banner-3.png";
+import visaoImg from "../../../assets/visao-img.png";
 
-import Header from "../../../Components/header/Header"
-import Footer from "../../../Components/footer/Footer"
-import CardEvento from "../../../Components/cardEvento/CardEvento"
-import Carrossel from "../../../Components/carrossel/Carrossel"
+import Header from "../../../Components/header/Header";
+import Footer from "../../../Components/footer/Footer";
+import CardEvento from "../../../Components/cardEvento/CardEvento";
+import Carrossel from "../../../Components/carrossel/Carrossel";
 
 function Home() {
     const eventos = [

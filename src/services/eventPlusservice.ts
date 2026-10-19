@@ -1,50 +1,64 @@
 import { axiosInstance } from "./api";
 
-import type { Evento, LoginPayload, LoginResponse, Presenca, PresencaPayload, Usuario } from "../types/api";
+import type { Comentario, ComentarioPayload, Evento, LoginPayload, LoginResponse, MensagemModeracao, Presenca, PresencaPayload, Usuario } from "../types/api";
 
-export const authService ={
+export const authService = {
     async login(payload: LoginPayload) {
         const { data } = await axiosInstance.post<LoginResponse>("Login", payload);
         return data;
     }
-}
+};
+
 export const eventoService = {
     async listar() {
-        const { data } = await axiosInstance.get<Evento[]>("Evento")
+        const { data } = await axiosInstance.get<Evento[]>("Evento");
         return data;
     },
-
     async listarProximos() {
         const { data } = await axiosInstance.get<Evento[]>("Evento/proximos");
         return data;
     },
-
     async buscar(id: string) {
         const { data } = await axiosInstance.get<Evento>(`Evento/${id}`);
         return data;
     }
-}
+};
 
-export const presencaService = {
-    async listaPorUsuario(idUsuario: string) {
-        const { data } = await axiosInstance.get<Presenca[]>(`Presenca/usuario/${idUsuario}`);
+export const comentarioService = {
+    async listarPorEvento(idEvento: string) {
+        const { data } = await axiosInstance.get<Comentario[]>(
+            `Comentario/ListarPorEvento/${idEvento}`
+        );
         return data;
     },
+    async cadastrar(payload: ComentarioPayload) {
+        const { data } = await axiosInstance.post<Comentario | MensagemModeracao>(
+            "Comentario",
+            payload
+        );
+        return data;
+    }
+};
 
-    async cadastrar (payload: PresencaPayload) {
+export const presencaService = {
+    async listarPorUsuario(idUsuario: string) {
+        const { data } = await axiosInstance.get<Presenca[]>(
+            `Presenca/usuario/${idUsuario}`
+        );
+        return data;
+    },
+    async cadastrar(payload: PresencaPayload) {
         const { data } = await axiosInstance.post<Presenca>("/Presenca", payload);
         return data;
     },
-
-    async excluir(id: string){
+    async excluir(id: string) {
         await axiosInstance.delete(`Presenca/${id}`);
     }
-
-}
+};
 
 export const usuarioService = {
-    async buscar(id:string){
-    const { data } = await axiosInstance.get<Usuario>(`Usuario/${id}`);
-    return data;
-}
-}
+    async buscar(id: string) {
+        const { data } = await axiosInstance.get<Usuario>(`Usuario/${id}`);
+        return data;
+    }
+};
