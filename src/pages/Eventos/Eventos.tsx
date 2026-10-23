@@ -1,12 +1,12 @@
 
 import "./Eventos.css";
 
-import Header from "../../../Components/header/Header";
-import Footer from "../../../Components/footer/Footer";
-import type { Evento } from "../../../types/api";
+import Header from "../../Components/header/Header";
+import Footer from "../../Components/footer/Footer";
+import type { Evento } from "../../types/api";
 import { useEffect, useState } from "react";
-import { eventoService } from "../../../services/eventPlusservice";
-import CardEvento from "../../../Components/cardEvento/CardEvento";
+import { eventoService } from "../../services/eventPlusservice";
+import CardEvento from "../../Components/cardEvento/CardEvento";
 
 function Eventos() {
     const [eventos, setEventos] = useState<Evento[]>([]);

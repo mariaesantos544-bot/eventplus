@@ -1,12 +1,12 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState, type FormEvent } from "react";
-import logoEvent from "../../../assets/logo-event.svg";
-import { Botao } from "../../../Components/botao/Botao";
-import { useAuth } from "../../../context/auth";
+import logoEvent from "../../assets/logo-event.svg";
+import { Botao } from "../../Components/botao/Botao";
+import { useAuth } from "../../context/auth";
 
 import "./Login.css";
-import Campo from "../../../Components/campo/Campo";
-import { getApiErrorMessage } from "../../../services/api";
+import Campo from "../../Components/campo/Campo";
+import { getApiErrorMessage } from "../../services/api";
 
 function Login() {
     const navigate = useNavigate();
