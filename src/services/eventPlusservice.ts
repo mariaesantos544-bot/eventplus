@@ -5,11 +5,13 @@ import type {
     Comentario,
     ComentarioPayload,
     Evento,
+    instituicao,
     LoginPayload,
     LoginResponse,
     MensagemModeracao,
     Presenca,
     PresencaPayload,
+    TipoEvento,
     TipoUsuario,
     Usuario,
     UsuarioPayload
@@ -128,15 +130,54 @@ export const usuarioService = {
     }
 };
 
-function tipoService<T>(endpoint: string) {
-    return {
-        async listar(): Promise<T[]> {
-            const { data } = await axiosInstance.get<T[]>(endpoint);
+export const tipoEventoService = {
+    async listar() {
+        const { data } = await axiosInstance.get<TipoEvento[]>("TipoEvento");
+        return data;
+    },
 
-            return data;
-        }
-    };
-}
+    async cadastrar(payload: { tituloTipoEvento: string }) {
+        const { data } = await axiosInstance.post<TipoEvento>(
+            "TipoEvento",
+            payload
+        );
+        return data;
+    },
 
-export const tipoUsuarioService =
-    tipoService<TipoUsuario>("TipoUsuario");
+    async atualizar(
+        id: string,
+        payload: { tituloTipoEvento: string }
+    ) {
+        await axiosInstance.put(`TipoEvento/${id}`, payload);
+    },
+
+    async excluir(id: string) {
+        await axiosInstance.delete(`TipoEvento/${id}`);
+    }
+};
+
+export const tipoUsuarioService = {
+    async listar() {
+        const { data } = await axiosInstance.get<TipoUsuario[]>("TipoUsuario");
+        return data;
+    },
+
+    async cadastrar(payload: { tituloTipoUsuario: string }) {
+        const { data } = await axiosInstance.post<TipoUsuario>(
+            "TipoUsuario",
+            payload
+        );
+        return data;
+    },
+
+    async atualizar(
+        id: string,
+        payload: { tituloTipoUsuario: string }
+    ) {
+        await axiosInstance.put(`TipoUsuario/${id}`, payload);
+    },
+
+    async excluir(id: string) {
+        await axiosInstance.delete(`TipoUsuario/${id}`);
+    }
+};

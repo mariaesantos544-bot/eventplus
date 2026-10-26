@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState, type PropsWithChildren } from "react";
 import type { AuthSession, LoginPayload } from "../types/api";
 import { SESSION_STORAGE_KEY, UNAUTHORIZED_EVENT } from "../services/api";
@@ -41,7 +40,13 @@ export function AuthProvider({ children }: PropsWithChildren) {
 
         const usuario = await usuarioService.buscar(session.usuario.idUsuario);
         persist({ ...session, usuario });
+    
+console.log("Usuário retornado pela API:", usuario);
+console.log("ID do tipo:", usuario.idTipoUsuario);
+console.log("Navegação do tipo:", usuario.idTipoUsuarioNavigation);
+
     }
+    
 
     async function login(payload: LoginPayload) {
         const loginResponse = await authService.login(payload);
@@ -56,6 +61,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
         }
     }
 
+    
     function logout() {
         persist(null);
     }
@@ -87,7 +93,10 @@ export function AuthProvider({ children }: PropsWithChildren) {
             .finally(() => setCarregandoSessao(false));
     }, []);
 
-    const perfil = session?.usuario?.idTipoUsuarioNavigation?.titulo?.toLowerCase() ?? "";
+
+const perfil = (
+    session?.usuario?.idTipoUsuarioNavigation?.tituloTipoUsuario ?? ""
+).trim().toLowerCase();
 
     return (
         <AuthContext.Provider

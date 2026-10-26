@@ -2,19 +2,29 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import logoEvent from "../../assets/logo-event.svg";
 import "./Header.css";
-import { perfilEhAdministrador, perfilEhOrganizador, useAuth } from "../../context/auth";
+
+import {
+    perfilEhAdministrador,
+    perfilEhOrganizador,
+    useAuth
+} from "../../context/auth";
 
 function Header() {
-    const { autenticado, usuario, perfil, logout } = useAuth();
+    const { autenticado, perfil, logout } = useAuth();
 
     const navigate = useNavigate();
+
     const administrador = perfilEhAdministrador(perfil);
     const organizador = perfilEhOrganizador(perfil);
+    console.log("Usuário autenticado:", autenticado);
+console.log("Perfil recebido:", perfil);
+console.log("É administrador:", administrador);
 
     function sair() {
         logout();
-        navigate("/")
+        navigate("/login");
     }
+
     return (
         <header className="header">
             <div className="header-conteudo">
@@ -25,22 +35,33 @@ function Header() {
                 <nav>
                     <NavLink to="/home">Home</NavLink>
                     <NavLink to="/eventos">Eventos</NavLink>
-                    <NavLink to="/usuarios">Usuários</NavLink>
+
+                    {administrador && (
+                        <>
+                            <NavLink to="/usuarios">Usuários</NavLink>
+                            <NavLink to="/tipoevento">Cadastro</NavLink>
+                        </>
+                    )}
+
                     <Link to="/home#contato">Contatos</Link>
                 </nav>
 
-                {autenticado ?
+                {autenticado ? (
                     <>
-                        <Link to="/conta">Minha conta</Link>
-                        <Link onClick={logout} to="/login">Sair</Link>
-                    </>
-                    :
-                    <Link to="/login">Entrar</Link>
+                        {organizador && (
+                            <Link to="/conta">Minha conta</Link>
+                        )}
 
-                }
+                        <button type="button" onClick={sair}>
+                            Sair
+                        </button>
+                    </>
+                ) : (
+                    <Link to="/login">Entrar</Link>
+                )}
             </div>
         </header>
-    )
+    );
 }
 
-export default Header
+export default Header;

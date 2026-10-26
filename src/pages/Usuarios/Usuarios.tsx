@@ -1,13 +1,3 @@
-import "./Usuarios.css";
-
-import Header from "../../Components/header/Header";
-import Footer from "../../Components/footer/Footer";
-import Campo from "../../Components/campo/Campo";
-import { Botao } from "../../Components/botao/Botao";
-import ListaUsuarios from "../../Components/listaUsuarios/ListaUsuarios";
-import ModalConfirmacao from "../../Components/modalConfirmacao/ModalConfirmacao";
-
-import type { TipoUsuario, Usuario } from "../../types/api";
 
 import {
     useCallback,
@@ -17,12 +7,25 @@ import {
     type FormEvent
 } from "react";
 
+import Header from "../../Components/header/Header";
+import Footer from "../../Components/footer/Footer";
+import Campo from "../../Components/campo/Campo";
+import { Botao } from "../../Components/botao/Botao";
+import ListaUsuarios from "../../Components/listaUsuarios/ListaUsuarios";
+import ModalConfirmacao from "../../Components/modalConfirmacao/ModalConfirmacao";
+
+import ilustracao from "../../assets/Vector.png";
+
+import type { TipoUsuario, Usuario } from "../../types/api";
+
 import {
     tipoUsuarioService,
     usuarioService
 } from "../../services/eventPlusservice";
 
 import { getApiErrorMessage } from "../../services/api";
+
+import "./Usuarios.css";
 
 interface FormularioUsuario {
     nome: string;
@@ -100,6 +103,7 @@ function Usuarios() {
 
     async function salvar(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
+
         setEnviando(true);
         setMensagem("");
 
@@ -170,25 +174,29 @@ function Usuarios() {
         <>
             <Header />
 
-            <main className="cadastro-usuario-page">
-                <section className="cadastro-usuario-formulario-section">
-                    <h1 className="section-title">
-                        Administração de usuários
+            <main className="usuarios-page">
+                <section className="usuarios-cadastro">
+                    <h1 className="usuarios-titulo">
+                        ADMINISTRAÇÃO DE USUÁRIOS
                     </h1>
 
-                    <div className="cadastro-usuario-conteudo">
-                        <img
-                            src=""
-                            alt="Ilustração da administração de usuários"
-                        />
+                    <hr className="usuarios-linha-titulo" />
+
+                    <div className="usuarios-conteudo">
+                        <div className="usuarios-ilustracao">
+                            <img
+                                src={ilustracao}
+                                alt="Ilustração da administração de usuários"
+                            />
+                        </div>
 
                         <form
-                            className="cadasto-usuario-formulario"
+                            className="usuarios-formulario"
                             onSubmit={salvar}
                         >
                             <h2>
                                 {idEmEdicao
-                                    ? "Editar Usuário"
+                                    ? "Editar usuário"
                                     : "Cadastrar usuário"}
                             </h2>
 
@@ -228,104 +236,103 @@ function Usuarios() {
                                 required
                             />
 
-                            <div className="cadastro-usuario-grid">
-                                <div>
-                                    <label
-                                        className="visually-hidden"
-                                        htmlFor="usuario-tipo"
+                            <label
+                                className="visually-hidden"
+                                htmlFor="usuario-tipo"
+                            >
+                                Tipo de usuário
+                            </label>
+
+                            <select
+                                className="usuarios-select"
+                                name="idTipoUsuario"
+                                id="usuario-tipo"
+                                value={formulario.idTipoUsuario}
+                                onChange={atualizar}
+                                required
+                            >
+                                <option value="" disabled>
+                                    Selecione o tipo de usuário
+                                </option>
+
+                                {tipos.map((tipo) => (
+                                    <option
+                                        value={tipo.idTipoUsuario}
+                                        key={tipo.idTipoUsuario}
                                     >
-                                        Tipo de usuário
-                                    </label>
+                                        {tipo.tituloTipoUsuario}
+                                    </option>
+                                ))}
+                            </select>
 
-                                    <select
-                                        name="idTipoUsuario"
-                                        id="usuario-tipo"
-                                        value={formulario.idTipoUsuario}
-                                        onChange={atualizar}
-                                        required
-                                    >
-                                        <option value="" disabled>
-                                            Selecione o tipo de usuário
-                                        </option>
+                            <label
+                                className="visually-hidden"
+                                htmlFor="usuario-senha"
+                            >
+                                Senha
+                            </label>
 
-                                        {tipos.map((tipo) => (
-                                            <option
-                                                value={tipo.idTipoUsuario}
-                                                key={tipo.idTipoUsuario}
-                                            >
-                                                {tipo.tituloTipoUsuario}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
+                            <Campo
+                                id="usuario-senha"
+                                name="senha"
+                                type="password"
+                                value={formulario.senha}
+                                onChange={atualizar}
+                                placeholder={
+                                    idEmEdicao ? "Nova senha" : "Senha"
+                                }
+                                minLength={8}
+                                maxLength={60}
+                                required={!idEmEdicao}
+                            />
 
-                                <div>
-                                    <label
-                                        className="visually-hidden"
-                                        htmlFor="usuario-senha"
-                                    >
-                                        Senha
-                                    </label>
+                            <Botao
+                                texto={
+                                    enviando
+                                        ? "Salvando..."
+                                        : idEmEdicao
+                                            ? "Salvar"
+                                            : "Cadastrar"
+                                }
+                                type="submit"
+                                disabled={enviando}
+                            />
 
-                                    <Campo
-                                        id="usuario-senha"
-                                        name="senha"
-                                        type="password"
-                                        value={formulario.senha}
-                                        onChange={atualizar}
-                                        placeholder={
-                                            idEmEdicao
-                                                ? "Nova Senha"
-                                                : "Senha"
-                                        }
-                                        minLength={8}
-                                        maxLength={60}
-                                        required={!idEmEdicao}
-                                    />
-                                </div>
-
-                                <Botao
-                                    texto={
-                                        enviando
-                                            ? "Salvando..."
-                                            : idEmEdicao
-                                                ? "Salvar"
-                                                : "Cadastrar"
-                                    }
-                                    type="submit"
+                            {idEmEdicao && (
+                                <button
+                                    className="usuarios-cancelar"
+                                    type="button"
+                                    onClick={limpar}
                                     disabled={enviando}
-                                />
+                                >
+                                    Cancelar edição
+                                </button>
+                            )}
 
-                                {idEmEdicao ? (
-                                    <button
-                                        className="cadastro-usuario-cancelar"
-                                        type="button"
-                                        onClick={limpar}
-                                    >
-                                        Cancelar Edição
-                                    </button>
-                                ) : null}
-
-                                {mensagem ? (
-                                    <p
-                                        className="cadastro-usuario-mensagem"
-                                        role="alert"
-                                    >
-                                        {mensagem}
-                                    </p>
-                                ) : null}
-                            </div>
+                            {mensagem && (
+                                <p className="usuarios-mensagem" role="alert">
+                                    {mensagem}
+                                </p>
+                            )}
                         </form>
                     </div>
                 </section>
 
-                <ListaUsuarios
-                    usuarios={usuarios}
-                    idEmEdicao={idEmEdicao}
-                    carregando={carregando}
-                    onEditar={editar}
-                    onExcluir={setSelecionado}
-                />
+                <section className="usuarios-lista-section">
+                    <div className="usuarios-lista-container">
+                        <h2>LISTA DE USUÁRIOS</h2>
+
+                        <hr className="usuarios-linha-lista" />
+
+                        <ListaUsuarios
+                            usuarios={usuarios}
+                            idEmEdicao={idEmEdicao}
+                            carregando={carregando}
+                            onEditar={editar}
+                            onExcluir={setSelecionado}
+                        />
+                    </div>
+                </section>
 
                 <ModalConfirmacao
                     show={Boolean(selecionado)}
