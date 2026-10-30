@@ -4,7 +4,6 @@ export interface TipoEvento {
     tituloTipoEvento: string;
 }
 
-
 export interface TipoUsuario {
     idTipoUsuario: string;
     tituloTipoUsuario: string;
@@ -24,6 +23,7 @@ export interface Usuario {
     idTipoUsuario?: string | null;
     idTipoUsuarioNavigation?: TipoUsuario | null;
 }
+
 export interface Evento {
     idEvento: string;
     nome: string;
@@ -35,6 +35,7 @@ export interface Evento {
     idTipoEventoNavigation?: TipoEvento | null;
     idInstituicaoNavigation?: instituicao | null;
 }
+
 export interface Comentario {
     idComentario: string;
     descricao: string;
@@ -90,4 +91,14 @@ export interface PresencaPayload {
 export interface MensagemModeracao {
     mensagem: string;
     motivo?: string;
+}
+
+export interface EventoPayload {
+    nome: string;
+    descricao: string;
+    dataEvento: string;
+    idTipoEvento: string | null;
+    idInstituicao: string | null;
+    arquivoImagem?: File | null;
+    imagemUrl?: string | null;
 }
