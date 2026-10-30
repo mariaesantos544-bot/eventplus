@@ -1,5 +1,11 @@
 .tipo-evento-page {
     width: 100%;
+    min-height: calc(100vh - 64px - 60px);
+    display: flex;
+    flex-direction: column;
+    font-family: "Poppins", Arial, sans-serif;
+    color: #17143f;
+    background-color: #ffffff;
 }
 
 /* Área de cadastro */
@@ -7,25 +13,32 @@
 .tipo-evento-cadastro {
     width: min(1200px, calc(100% - 48px));
     margin: 0 auto;
-    padding: 40px 0;
+    padding: 40px 0 50px;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
 }
 
 .tipo-evento-titulo {
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
     color: #17143f;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+    text-align: center;
 }
 
 .tipo-evento-linha-titulo {
     border: none;
-    border-top: 2px solid #b51d44;
     width: 100px;
-    margin-top: 8px;
-    margin-bottom: 40px;
+    height: 2px;
+    background-color: #b51d44;
+    margin: 8px auto 35px;
 }
 
 /* Ilustração e formulário */
@@ -33,9 +46,11 @@
 .tipo-evento-conteudo {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
-    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 60px;
 }
 
 .tipo-evento-ilustracao {
@@ -49,66 +64,103 @@
     display: block;
     max-width: 380px;
     width: 100%;
-    height: auto;
+    height: 240px;
     object-fit: contain;
 }
 
 .tipo-evento-formulario {
     width: 100%;
-    max-width: 350px;
+    max-width: 380px;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
 .tipo-evento-cancelar {
+    width: 100%;
+    height: 40px;
     background: transparent;
     border: 1px solid #b51d44;
     color: #b51d44;
-    padding: 10px;
-    border-radius: 8px;
+    border-radius: 4px;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 13px;
     cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.tipo-evento-cancelar:hover {
+    background-color: #fff3f6;
 }
 
 /* Campos do formulário */
 
 .tipo-evento-formulario input {
     width: 100%;
+    height: 38px;
     box-sizing: border-box;
     border: none;
     border-bottom: 1px solid #999999;
     border-radius: 0;
     background: transparent;
-    padding: 10px 4px;
+    padding: 6px 4px;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 13px;
+    color: #17143f;
     outline: none;
     box-shadow: none;
+    transition: border-color 0.2s ease;
 }
 
 .tipo-evento-formulario input:focus {
-    border-bottom: 1px solid #b51d44;
+    border-bottom: 2px solid #b51d44;
 }
 
-/* Botão cadastrar - vermelho vinho */
+.tipo-evento-formulario input::placeholder {
+    color: #aaaaaa;
+    font-size: 13px;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+/* Botão cadastrar */
 
 .tipo-evento-formulario .botao {
     width: 100%;
-    min-height: 42px;
+    height: 40px;
+    min-height: 40px;
     background-color: #b51d44;
     color: #ffffff;
     border: none;
     border-radius: 4px;
-    padding: 10px;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
 .tipo-evento-formulario .botao:hover {
-    background-color: #a51f40;
+    background-color: #821b47;
 }
 
 .tipo-evento-formulario .botao:disabled {
-    opacity: 0.7;
+    opacity: 0.6;
     cursor: not-allowed;
+}
+
+.tipo-evento-mensagem {
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 13px;
+    text-align: center;
+    margin: 5px 0;
+}
+
+.tipo-evento-mensagem-erro {
+    color: #b51d44;
+}
+
+.tipo-evento-mensagem-sucesso {
+    color: #27834a;
 }
 
 /* Seção da lista */
@@ -116,8 +168,11 @@
 .tipo-evento-lista-section {
     background-color: #b51d44;
     color: #ffffff;
-    padding: 48px 0;
+    padding: 35px 0 50px;
     width: 100%;
+    flex: 1;
+    min-height: 340px;
+    box-sizing: border-box;
 }
 
 .tipo-evento-lista-container {
@@ -129,27 +184,36 @@
 }
 
 .tipo-evento-lista-container h2 {
-    font-size: 1.1rem;
-    font-weight: bold;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
     color: #ffffff;
+    margin: 0;
+    text-align: center;
 }
 
 .tipo-evento-linha-lista {
     border: none;
-    border-top: 2px solid #ffffff;
     width: 100px;
-    margin-top: 8px;
-    margin-bottom: 32px;
+    height: 1px;
+    background-color: #ffffff;
+    margin: 8px auto 25px;
 }
 
 /* Tabela */
 
+.tipo-evento-tabela-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
 .tipo-evento-tabela {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    table-layout: fixed;
+    border-collapse: collapse;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 13px;
     color: #ffffff;
 }
 
@@ -157,19 +221,20 @@
     padding: 12px 16px;
     text-align: left;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    font-weight: 600;
+    font-size: 13px;
 }
 
 .tipo-evento-tabela td {
-    padding: 16px;
+    padding: 14px 16px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     vertical-align: middle;
+    font-size: 13px;
 }
-
-/* Espaçamento entre Título, Editar e Deletar */
 
 .tipo-evento-tabela th:first-child,
 .tipo-evento-tabela td:first-child {
-    width: 65%;
+    width: 70%;
     text-align: left;
 }
 
@@ -177,37 +242,46 @@
 .tipo-evento-tabela td:nth-child(2),
 .tipo-evento-tabela th:nth-child(3),
 .tipo-evento-tabela td:nth-child(3) {
-    width: 17.5%;
+    width: 15%;
     text-align: center;
 }
 
 /* Botões e ícones da tabela */
 
-.tipo-evento-tabela button {
+.tipo-evento-acao {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 4px;
+    padding: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.tipo-evento-tabela button img {
+.tipo-evento-acao img {
     width: 18px;
     height: 18px;
+    object-fit: contain;
     filter: brightness(0) invert(1);
+    transition: transform 0.2s;
 }
 
-/* Altura das linhas */
+.tipo-evento-acao:hover img {
+    transform: scale(1.15);
+}
 
-.tipo-evento-tabela td {
-    min-height: 44px;
+.tipo-evento-acao:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 /* Responsividade */
 
-@media (max-width: 650px) {
+@media (max-width: 768px) {
     .tipo-evento-cadastro {
         width: calc(100% - 32px);
         padding: 32px 0;
+        min-height: auto;
     }
 
     .tipo-evento-conteudo {
@@ -216,7 +290,8 @@
     }
 
     .tipo-evento-ilustracao img {
-        max-width: 320px;
+        max-width: 300px;
+        height: 190px;
     }
 
     .tipo-evento-formulario {
@@ -225,10 +300,5 @@
 
     .tipo-evento-lista-container {
         width: calc(100% - 32px);
-        overflow-x: auto;
-    }
-
-    .tipo-evento-tabela {
-        min-width: 420px;
     }
 }

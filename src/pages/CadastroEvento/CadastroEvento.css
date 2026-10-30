@@ -1,31 +1,27 @@
-/* ================================
-   PÁGINA DE CADASTRO DE EVENTOS
-================================ */
-
 .cadastro-evento-page {
     width: min(1200px, calc(100% - 48px));
-    min-height: 80vh;
+    min-height: calc(100vh - 64px - 60px);
     margin: 0 auto;
-    padding: 55px 0 80px;
+    padding: 40px 0 60px;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    font-family: "Poppins", Arial, sans-serif;
     color: #17143f;
+    background-color: #ffffff;
 }
-
-/* ================================
-   TÍTULO DA PÁGINA
-================================ */
 
 .cadastro-evento-page > section:first-child {
     text-align: center;
-    margin-bottom: 65px;
+    margin-bottom: 35px;
 }
 
 .cadastro-evento-page > section:first-child h1 {
-    font-size: 27px;
-    font-weight: 600;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+    color: #17143f;
+    margin: 0;
     position: relative;
     display: inline-block;
 }
@@ -33,67 +29,61 @@
 .cadastro-evento-page > section:first-child h1::after {
     content: "";
     display: block;
-    width: 100%;
+    width: 100px;
     height: 2px;
     background-color: #b51d44;
-    margin-top: 10px;
+    margin: 8px auto 0;
 }
 
 .cadastro-evento-page > section:first-child p {
-    font-size: 14px;
-    color: #777;
-    margin-top: 15px;
+    display: none;
 }
-
-/* ================================
-   ÁREA DO FORMULÁRIO
-================================ */
 
 .cadastro-evento-page > div {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 45px;
-    margin-bottom: 85px;
+    justify-content: space-between;
+    gap: 60px;
+    margin-bottom: 50px;
 }
 
-/* Imagem ilustrativa */
 
-.cadastro-evento-page > div > img {
-    width: 42%;
-    max-width: 430px;
-    height: 280px;
-    object-fit: cover;
+.cadastro-evento-page > div > img,
+.cadastro-evento-ilustracao {
+    width: 45%;
+    max-width: 440px;
+    height: 260px;
+    object-fit: contain;
     border-radius: 35px;
+    background-color: #ededed;
+    padding: 16px;
+    box-sizing: border-box;
+    display: block;
 }
-
-/* Esconde a imagem enquanto o src estiver vazio */
 
 .cadastro-evento-page > div > img[src=""] {
     display: none;
 }
 
-/* Formulário */
 
 .cadastro-evento-page form {
-    width: 58%;
-    max-width: 650px;
+    width: 50%;
+    max-width: 520px;
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 18px;
 }
 
 .cadastro-evento-page form h2 {
     display: none;
 }
 
-/* Campos em linha */
 
 .cadastro-evento-page form > div {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
     width: 100%;
 }
 
@@ -102,23 +92,23 @@
     min-width: 0;
 }
 
-/* Inputs e textarea */
 
 .cadastro-evento-page form input:not([type="file"]),
 .cadastro-evento-page form textarea,
 .cadastro-evento-page form select {
     width: 100%;
+    height: 38px;
     box-sizing: border-box;
     border: none;
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid #999999;
     border-radius: 0;
     background: transparent;
-    padding: 12px 5px;
-    font-family: "Poppins", sans-serif;
-    font-size: 14px;
+    padding: 6px 4px;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 13px;
     color: #17143f;
     outline: none;
-    transition: border-color 0.3s;
+    transition: border-color 0.2s ease;
 }
 
 .cadastro-evento-page form input:focus,
@@ -127,17 +117,22 @@
     border-bottom: 2px solid #b51d44;
 }
 
-/* Descrição */
+.cadastro-evento-page form input::placeholder,
+.cadastro-evento-page form textarea::placeholder {
+    color: #aaaaaa;
+    font-size: 13px;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
 
 .cadastro-evento-page form textarea {
-    min-height: 55px;
+    min-height: 48px;
     resize: vertical;
 }
 
-/* Seleção de tipo e instituição */
 
 .cadastro-evento-page form > div:nth-of-type(2) {
-    gap: 25px;
+    gap: 20px;
 }
 
 .cadastro-evento-page form > div:nth-of-type(2) label {
@@ -145,43 +140,52 @@
     min-width: 0;
 }
 
-/* Campo de imagem */
 
 .cadastro-evento-page form > label[for="foto-evento"] {
     width: 100%;
-    min-height: 35px;
-    border-bottom: 1px solid #999;
-    color: #999;
+    min-height: 38px;
+    border-bottom: 1px solid #999999;
+    color: #aaaaaa;
+    font-family: "Poppins", Arial, sans-serif;
     font-size: 13px;
     cursor: pointer;
-    padding: 8px 5px;
+    padding: 8px 4px;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .cadastro-evento-page form > label[for="foto-evento"]:hover {
     color: #b51d44;
+    border-bottom-color: #b51d44;
 }
 
 .cadastro-evento-page form input[type="file"] {
     display: none;
 }
 
-/* Botão cadastrar */
 
-.cadastro-evento-page form button {
+.cadastro-evento-page form button[type="submit"],
+.cadastro-evento-page form .botao {
     width: 100%;
-    min-height: 43px;
+    height: 40px;
+    min-height: 40px;
     border: none;
     border-radius: 4px;
     background-color: #b51d44;
-    color: white;
-    font-family: "Poppins", sans-serif;
+    color: #ffffff;
+    font-family: "Poppins", Arial, sans-serif;
     font-size: 14px;
+    font-weight: 500;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background-color 0.2s ease;
+    margin-top: 4px;
 }
 
-.cadastro-evento-page form button:hover {
+.cadastro-evento-page form button[type="submit"]:hover,
+.cadastro-evento-page form .botao:hover {
     background-color: #821b47;
 }
 
@@ -190,34 +194,47 @@
     cursor: not-allowed;
 }
 
-/* Cancelar edição */
 
 .cadastro-evento-page form .cadastro-evento-cancelar {
-    background-color: #777;
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    border: 1px solid #b51d44;
+    color: #b51d44;
+    border-radius: 4px;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s ease;
 }
 
-/* Mensagens */
+.cadastro-evento-page form .cadastro-evento-cancelar:hover {
+    background-color: #fff3f6;
+}
+
 
 .cadastro-evento-page form p[role="status"] {
+    font-family: "Poppins", Arial, sans-serif;
     font-size: 13px;
     color: #b51d44;
+    text-align: center;
+    margin: 4px 0;
 }
-
-/* ================================
-   EVENTOS CADASTRADOS
-================================ */
 
 .cadastro-evento-page > section:last-of-type {
     width: 100%;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .cadastro-evento-page > section:last-of-type h2 {
     text-align: center;
-    font-size: 24px;
-    font-weight: 600;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
     text-transform: uppercase;
-    margin-bottom: 45px;
+    letter-spacing: 0.5px;
+    color: #17143f;
+    margin: 0;
 }
 
 .cadastro-evento-page > section:last-of-type h2::after {
@@ -226,62 +243,19 @@
     width: 75px;
     height: 2px;
     background-color: #b51d44;
-    margin: 12px auto 0;
+    margin: 8px auto 35px;
 }
 
 .cadastro-evento-page > section:last-of-type > div {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 45px;
+    gap: 32px;
     width: 100%;
 }
-
-/* Cards */
-
-.cadastro-evento-page .home-evento-card {
-    width: 100%;
-    min-width: 0;
-    overflow: hidden;
-    border: 1px solid #b51d44;
-    border-radius: 5px;
-    background-color: #fff;
-    box-sizing: border-box;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.cadastro-evento-page .home-evento-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
-}
-
-.cadastro-evento-page .home-evento-card > img {
-    width: 100%;
-    height: 210px;
-    object-fit: cover;
-}
-
-.cadastro-evento-page .home-evento-card-info {
-    padding: 18px;
-}
-
-.cadastro-evento-page .home-evento-card-info h3 {
-    font-size: 17px;
-    margin-bottom: 10px;
-}
-
-.cadastro-evento-page .home-evento-card-info p {
-    font-size: 13px;
-    color: #777;
-    line-height: 1.6;
-}
-
-/* ================================
-   RESPONSIVIDADE
-================================ */
 
 @media (max-width: 900px) {
     .cadastro-evento-page {
-        padding: 40px 5%;
+        padding: 30px 20px;
     }
 
     .cadastro-evento-page > div {
@@ -289,8 +263,10 @@
         gap: 30px;
     }
 
-    .cadastro-evento-page > div > img {
+    .cadastro-evento-page > div > img,
+    .cadastro-evento-ilustracao {
         width: 100%;
+        max-width: 360px;
     }
 
     .cadastro-evento-page form {
@@ -300,15 +276,11 @@
 
     .cadastro-evento-page > section:last-of-type > div {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 25px;
+        gap: 20px;
     }
 }
 
-@media (max-width: 550px) {
-    .cadastro-evento-page {
-        padding: 30px 20px;
-    }
-
+@media (max-width: 600px) {
     .cadastro-evento-page form > div {
         flex-direction: column;
         gap: 15px;
@@ -316,9 +288,5 @@
 
     .cadastro-evento-page > section:last-of-type > div {
         grid-template-columns: 1fr;
-    }
-
-    .cadastro-evento-page > section:first-child h1 {
-        font-size: 21px;
     }
 }

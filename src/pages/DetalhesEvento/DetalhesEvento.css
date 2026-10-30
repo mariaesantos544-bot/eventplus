@@ -1,52 +1,41 @@
-
 .detalhes-evento {
     width: min(1200px, calc(100% - 48px));
-    margin: 34px auto 80px;
-
+    margin: 30px auto 60px;
     display: grid;
-    grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.8fr);
+    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr);
     column-gap: 60px;
     row-gap: 0;
-
     align-content: start;
-
-    font-family: Arial, Helvetica, sans-serif;
-    color: #080808;
+    font-family: "Poppins", Arial, sans-serif;
+    color: #17143f;
+    box-sizing: border-box;
 }
-
 
 .detalhes-evento .banner-evento {
     grid-column: 1 / -1;
-
     display: block;
     width: 100%;
-    height: 250px;
-
+    height: 260px;
     object-fit: cover;
     object-position: center;
-
-    border-radius: 2px;
+    border-radius: 4px;
 }
-
 
 .detalhes-evento .titulo-evento {
     grid-column: 1 / -1;
-
-    margin: 12px 0 32px;
-
+    margin: 16px 0 32px;
     text-align: center;
-    font-size: 40px;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 36px;
     font-weight: 600;
     line-height: 1.3;
-
+    color: #17143f;
     overflow-wrap: anywhere;
 }
-
 
 .detalhes-evento .conteudo-evento {
     grid-column: 1;
     grid-row: 3;
-
     min-width: 0;
 }
 
@@ -55,160 +44,130 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 12px;
-
     margin-bottom: 20px;
 }
 
 .detalhes-evento .abas-evento button {
-    min-height: 30px;
+    min-height: 32px;
     padding: 6px 18px;
-
     border: none;
     border-radius: 20px;
-
     background: transparent;
-    color: #111111;
-
-    font-family: inherit;
+    color: #17143f;
+    font-family: "Poppins", Arial, sans-serif;
     font-size: 13px;
     font-weight: 500;
-
     cursor: pointer;
     white-space: nowrap;
-
-    transition:
-        background-color 0.2s ease,
-        color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
-
 
 .detalhes-evento .abas-evento button.ativa {
-    background-color: #bd2949;
+    background-color: #b51d44;
     color: #ffffff;
 }
-
 
 .detalhes-evento .abas-evento button:hover:not(.ativa) {
     background-color: #f7e7eb;
 }
 
-
 .detalhes-evento .descricao-evento {
     margin: 0;
-
+    font-family: "Poppins", Arial, sans-serif;
     font-size: 14px;
     line-height: 1.7;
-
+    color: #333333;
     text-align: justify;
     overflow-wrap: anywhere;
 }
 
-
 .detalhes-evento .informacoes-principais {
     grid-column: 2;
     grid-row: 3;
-
     min-width: 0;
     padding-top: 4px;
 }
 
-
 .detalhes-evento .informacoes-principais h2 {
     width: fit-content;
     max-width: 100%;
-
     margin: 0 0 22px;
     padding-bottom: 6px;
-
-    border-bottom: 1px solid #bd2949;
-
+    border-bottom: 2px solid #b51d44;
+    font-family: "Poppins", Arial, sans-serif;
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
+    color: #17143f;
 }
-
 
 .detalhes-evento .informacoes-principais hr {
     display: none;
 }
 
-
 .detalhes-evento .informacao-item {
     display: flex;
     align-items: flex-start;
-    gap: 10px;
-
-    margin-bottom: 24px;
-
+    gap: 12px;
+    margin-bottom: 20px;
+    font-family: "Poppins", Arial, sans-serif;
     font-size: 13px;
     line-height: 1.6;
+    color: #333333;
 }
 
 .detalhes-evento .informacao-item img {
     flex: 0 0 19px;
-
     width: 19px;
     height: 19px;
-
     object-fit: contain;
 }
 
-
-.detalhes-evento .informacoes-principais button {
+.detalhes-evento .informacoes-principais button,
+.detalhes-evento .informacoes-principais .botao {
     display: block;
-
     width: 100%;
-    min-height: 38px;
-    margin-top: 4px;
+    height: 40px;
+    min-height: 40px;
+    margin-top: 8px;
     padding: 10px 14px;
-
-    background-color: #bd2949;
+    background-color: #b51d44;
     color: #ffffff;
-
     border: none;
-    border-radius: 3px;
-
-    font-family: inherit;
-    font-size: 12px;
+    border-radius: 4px;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 13px;
     font-weight: 500;
-
     cursor: pointer;
-
-    transition:
-        background-color 0.2s ease,
-        opacity 0.2s ease;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
 }
 
-
-.detalhes-evento .informacoes-principais button:hover:not(:disabled) {
-    background-color: #a91f3e;
+.detalhes-evento .informacoes-principais button:hover:not(:disabled),
+.detalhes-evento .informacoes-principais .botao:hover:not(:disabled) {
+    background-color: #821b47;
 }
 
-
-.detalhes-evento .informacoes-principais button:disabled {
+.detalhes-evento .informacoes-principais button:disabled,
+.detalhes-evento .informacoes-principais .botao:disabled {
     opacity: 0.7;
     cursor: not-allowed;
 }
 
-
-.detalhes-evento
-    .informacoes-principais
-    button.detalhe-evento-cancelar {
+.detalhes-evento .informacoes-principais button.detalhe-evento-cancelar {
     background-color: #777777;
     color: #ffffff;
 }
 
-.detalhes-evento
-    .informacoes-principais
-    button.detalhe-evento-cancelar:hover:not(:disabled) {
+.detalhes-evento .informacoes-principais button.detalhe-evento-cancelar:hover:not(:disabled) {
     background-color: #5f5f5f;
 }
 
-
 .detalhes-evento .secao-comentarios h2 {
     margin: 0 0 18px;
+    font-family: "Poppins", Arial, sans-serif;
     font-size: 15px;
     font-weight: 600;
+    color: #17143f;
 }
 
 .detalhes-evento .detalhe-evento-comentarios {
@@ -216,40 +175,30 @@
     min-width: 0;
 }
 
-
 .detalhes-evento .detalhe-evento-comentarios form {
     display: flex;
     align-items: center;
     gap: 10px;
-
     width: 100%;
-    margin: 24px 0 40px;
+    margin: 20px 0 35px;
 }
-
 
 .detalhes-evento .detalhe-evento-comentarios form input,
 .detalhes-evento .detalhe-evento-comentarios form textarea {
     flex: 1;
-
     width: 100%;
     min-width: 0;
-
     padding: 7px 4px;
-
     border: none;
     border-bottom: 1px solid #888888;
     border-radius: 0;
     outline: none;
-
     background: transparent;
     box-shadow: none;
-
-    color: #111111;
-
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
+    color: #17143f;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 12px;
 }
-
 
 .detalhes-evento .detalhe-evento-comentarios form input::placeholder,
 .detalhes-evento .detalhe-evento-comentarios form textarea::placeholder {
@@ -257,118 +206,91 @@
     opacity: 1;
 }
 
-
 .detalhes-evento .detalhe-evento-comentarios form input:focus,
 .detalhes-evento .detalhe-evento-comentarios form textarea:focus {
-    border-bottom-color: #bd2949;
+    border-bottom-color: #b51d44;
 }
-
 
 .detalhes-evento .detalhe-evento-comentarios form button {
     display: flex;
-    flex: 0 0 22px;
-
+    flex: 0 0 24px;
     align-items: center;
     justify-content: center;
-
-    width: 22px;
+    width: 24px;
     min-height: 26px;
     padding: 0;
-
     border: none;
-    border-radius: 0;
-
     background: transparent;
-
     cursor: pointer;
 }
 
-
 .detalhes-evento .detalhe-evento-comentarios form button img {
     display: block;
-
-    width: 16px;
-    height: 16px;
-
+    width: 18px;
+    height: 18px;
     object-fit: contain;
 }
-
 
 .detalhes-evento .detalhe-evento-comentarios form button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
 }
 
-
 .detalhes-evento .detalhe-evento-comentarios article {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     padding-left: 10px;
 }
 
 .detalhes-evento .detalhe-evento-comentarios article p:first-child {
-    margin: 0 0 5px;
-
-    font-size: 11px;
-    font-weight: 700;
+    margin: 0 0 4px;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #17143f;
 }
 
 .detalhes-evento .detalhe-evento-comentarios article p:last-child {
     margin: 0;
-
-    font-size: 11px;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 12px;
     line-height: 1.6;
-
+    color: #555555;
     overflow-wrap: anywhere;
 }
-
 
 .detalhes-evento .detalhe-evento-mensagem {
     margin: 12px 0;
-
+    font-family: "Poppins", Arial, sans-serif;
     font-size: 12px;
     line-height: 1.5;
-
+    color: #b51d44;
     overflow-wrap: anywhere;
 }
 
-
 .detalhes-evento .visually-hidden {
     position: absolute;
-
     width: 1px;
     height: 1px;
-
     padding: 0;
     margin: -1px;
-
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-
     white-space: nowrap;
     border: 0;
 }
 
-/* Mensagens de erro */
-
 .detalhes-evento > [role="alert"] {
     grid-column: 1 / -1;
-
     margin: 0 0 16px;
-
-    color: #bd2949;
+    color: #b51d44;
+    font-family: "Poppins", Arial, sans-serif;
     font-size: 13px;
 }
 
-/* ========================================
-   NOTEBOOKS E TELAS MENORES
-======================================== */
-
-@media (max-width: 700px) {
+@media (max-width: 768px) {
     .detalhes-evento {
         width: calc(100% - 32px);
-
         margin: 18px auto 40px;
-
         grid-template-columns: minmax(0, 1fr);
         column-gap: 0;
         row-gap: 24px;
@@ -379,72 +301,13 @@
     }
 
     .detalhes-evento .titulo-evento {
-        margin: -14px 0 0;
-
-        font-size: clamp(26px, 5vw, 36px);
+        font-size: clamp(24px, 5vw, 32px);
+        margin: 8px 0 16px;
     }
 
     .detalhes-evento .conteudo-evento,
     .detalhes-evento .informacoes-principais {
         grid-column: 1;
         grid-row: auto;
-    }
-
-    .detalhes-evento .abas-evento {
-        gap: 6px;
-        margin-bottom: 18px;
-    }
-
-    .detalhes-evento .abas-evento button {
-        padding: 6px 12px;
-        font-size: 12px;
-    }
-
-    .detalhes-evento .descricao-evento {
-        font-size: 13px;
-        line-height: 1.7;
-    }
-
-    .detalhes-evento .informacoes-principais {
-        padding-top: 0;
-    }
-
-    .detalhes-evento .informacoes-principais h2 {
-        margin-bottom: 18px;
-        font-size: 12px;
-    }
-
-    .detalhes-evento .informacao-item {
-        margin-bottom: 16px;
-        font-size: 12px;
-    }
-
-    .detalhes-evento .informacoes-principais button {
-        max-width: 320px;
-    }
-
-    .detalhes-evento .detalhe-evento-comentarios form {
-        gap: 8px;
-        margin: 20px 0 30px;
-    }
-}
-
-
-@media (max-width: 380px) {
-    .detalhes-evento {
-        width: calc(100% - 24px);
-    }
-
-    .detalhes-evento .abas-evento {
-        gap: 2px;
-    }
-
-    .detalhes-evento .abas-evento button {
-        padding: 6px 9px;
-        font-size: 11px;
-    }
-
-    .detalhes-evento .titulo-evento {
-        font-size: 25px;
     }
 }

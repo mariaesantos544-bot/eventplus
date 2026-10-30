@@ -1,27 +1,31 @@
 .modal-content {
     border: 1px solid #ecd7dc;
     border-radius: 14px;
+    font-family: "Poppins", Arial, sans-serif;
 }
 
 .modal-header,
 .modal-footer {
-    color: #16143f;
+    color: #17143f;
     font-size: 1.1rem;
     font-weight: 700;
+    font-family: "Poppins", Arial, sans-serif;
 }
 
 .modal-body {
     margin: 0;
-    
     color: #555555;
     line-height: 1.6;
-}
-.modal-footer .btn-danger{
-    background-color: #bd1946;
-    border-color: #bd1946;
+    font-family: "Poppins", Arial, sans-serif;
 }
 
-.modal-footer .btn-danger:hover{
-    background-color: #9f143a;
-    border-color: #9f143a;
+.modal-footer .btn-danger {
+    background-color: #b51d44;
+    border-color: #b51d44;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+.modal-footer .btn-danger:hover {
+    background-color: #821b47;
+    border-color: #821b47;
 }

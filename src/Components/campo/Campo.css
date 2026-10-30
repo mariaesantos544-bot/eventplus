@@ -1,0 +1,27 @@
+.campo {
+    width: 100%;
+    height: 38px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #999999;
+    border-radius: 0;
+    background: transparent;
+    padding: 6px 4px;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 13px;
+    color: #17143f;
+    outline: none;
+    box-shadow: none;
+    transition: border-color 0.2s ease;
+}
+
+.campo:focus {
+    border-bottom: 2px solid #b51d44;
+}
+
+.campo::placeholder {
+    color: #aaaaaa;
+    font-size: 13px;
+    font-family: "Poppins", Arial, sans-serif;
+    opacity: 1;
+}

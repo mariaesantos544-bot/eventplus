@@ -4,54 +4,93 @@
     --cor-texto: #17143f;
     --vermelho: #b51d44;
     --vermelho-escuro: #821b47;
-    --azul-claro: rgba(0,80,251,0.21);
+    --azul-claro: rgba(0, 80, 251, 0.15);
 }
 
 .home-evento-card {
-    border: 1px solid var(--vermelho-escuro);
-    border-radius: 12px;
+    border: 1px solid var(--vermelho);
+    border-radius: 8px;
     overflow: hidden;
-    max-width: 300px;
+    background: var(--branco);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.home-evento-card img{
     width: 100%;
-    aspect-ratio: 16 / 9;
+    max-width: 300px;
+    min-width: 0;
+    box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+.home-evento-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(23, 20, 63, 0.12);
+}
+
+.home-evento-card > img {
+    width: 100%;
+    height: 170px;
     object-fit: cover;
+    object-position: center;
+    display: block;
 }
 
-.home-evento-card span{
-    background-color:var(--azul-claro) ;
+.home-evento-card > span {
+    align-self: flex-start;
+    margin: 12px 14px 0;
+    padding: 4px 14px;
     border-radius: 12px;
-    padding: 0 10px;
-    display: inline-block;
-    width: 50%;
-    text-align: center;
+    background-color: var(--azul-claro);
+    color: var(--cor-texto);
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.3;
 }
 
-.home-evento-card-info{
+.home-evento-card-info {
+    padding: 14px 16px 16px;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    justify-content: space-between;
-    height: 70%;
+    flex: 1;
 }
 
-.home-evento-card-info button{
+.home-evento-card-info h3 {
+    margin: 0 0 10px;
+    color: var(--cor-texto);
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.home-evento-card-info p {
+    margin: 0 0 16px;
+    color: #777777;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.home-evento-card-info a,
+.home-evento-card-info button {
+    margin-top: auto;
     border: none;
-    background: none;
+    background: transparent;
     color: var(--vermelho);
-    font-weight: 700;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
     cursor: pointer;
+    transition: color 0.2s ease;
 }
 
-.home-evento-card h3,
-.home-evento-card p,
-.home-evento-card span,
-.home-evento-card button{
-    margin: 12px 16px;
+.home-evento-card-info a:hover,
+.home-evento-card-info button:hover {
+    color: var(--vermelho-escuro);
+    text-decoration: underline;
 }
