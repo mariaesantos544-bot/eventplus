@@ -1,0 +1,450 @@
+
+.detalhes-evento {
+    width: min(1200px, calc(100% - 48px));
+    margin: 34px auto 80px;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.8fr);
+    column-gap: 60px;
+    row-gap: 0;
+
+    align-content: start;
+
+    font-family: Arial, Helvetica, sans-serif;
+    color: #080808;
+}
+
+
+.detalhes-evento .banner-evento {
+    grid-column: 1 / -1;
+
+    display: block;
+    width: 100%;
+    height: 250px;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 2px;
+}
+
+
+.detalhes-evento .titulo-evento {
+    grid-column: 1 / -1;
+
+    margin: 12px 0 32px;
+
+    text-align: center;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1.3;
+
+    overflow-wrap: anywhere;
+}
+
+
+.detalhes-evento .conteudo-evento {
+    grid-column: 1;
+    grid-row: 3;
+
+    min-width: 0;
+}
+
+.detalhes-evento .abas-evento {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+.detalhes-evento .abas-evento button {
+    min-height: 30px;
+    padding: 6px 18px;
+
+    border: none;
+    border-radius: 20px;
+
+    background: transparent;
+    color: #111111;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+
+    cursor: pointer;
+    white-space: nowrap;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.detalhes-evento .abas-evento button.ativa {
+    background-color: #bd2949;
+    color: #ffffff;
+}
+
+
+.detalhes-evento .abas-evento button:hover:not(.ativa) {
+    background-color: #f7e7eb;
+}
+
+
+.detalhes-evento .descricao-evento {
+    margin: 0;
+
+    font-size: 14px;
+    line-height: 1.7;
+
+    text-align: justify;
+    overflow-wrap: anywhere;
+}
+
+
+.detalhes-evento .informacoes-principais {
+    grid-column: 2;
+    grid-row: 3;
+
+    min-width: 0;
+    padding-top: 4px;
+}
+
+
+.detalhes-evento .informacoes-principais h2 {
+    width: fit-content;
+    max-width: 100%;
+
+    margin: 0 0 22px;
+    padding-bottom: 6px;
+
+    border-bottom: 1px solid #bd2949;
+
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+
+.detalhes-evento .informacoes-principais hr {
+    display: none;
+}
+
+
+.detalhes-evento .informacao-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    margin-bottom: 24px;
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.detalhes-evento .informacao-item img {
+    flex: 0 0 19px;
+
+    width: 19px;
+    height: 19px;
+
+    object-fit: contain;
+}
+
+
+.detalhes-evento .informacoes-principais button {
+    display: block;
+
+    width: 100%;
+    min-height: 38px;
+    margin-top: 4px;
+    padding: 10px 14px;
+
+    background-color: #bd2949;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 3px;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+.detalhes-evento .informacoes-principais button:hover:not(:disabled) {
+    background-color: #a91f3e;
+}
+
+
+.detalhes-evento .informacoes-principais button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+
+.detalhes-evento
+    .informacoes-principais
+    button.detalhe-evento-cancelar {
+    background-color: #777777;
+    color: #ffffff;
+}
+
+.detalhes-evento
+    .informacoes-principais
+    button.detalhe-evento-cancelar:hover:not(:disabled) {
+    background-color: #5f5f5f;
+}
+
+
+.detalhes-evento .secao-comentarios h2 {
+    margin: 0 0 18px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.detalhes-evento .detalhe-evento-comentarios {
+    width: 100%;
+    min-width: 0;
+}
+
+
+.detalhes-evento .detalhe-evento-comentarios form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    width: 100%;
+    margin: 24px 0 40px;
+}
+
+
+.detalhes-evento .detalhe-evento-comentarios form input,
+.detalhes-evento .detalhe-evento-comentarios form textarea {
+    flex: 1;
+
+    width: 100%;
+    min-width: 0;
+
+    padding: 7px 4px;
+
+    border: none;
+    border-bottom: 1px solid #888888;
+    border-radius: 0;
+    outline: none;
+
+    background: transparent;
+    box-shadow: none;
+
+    color: #111111;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+}
+
+
+.detalhes-evento .detalhe-evento-comentarios form input::placeholder,
+.detalhes-evento .detalhe-evento-comentarios form textarea::placeholder {
+    color: #aaaaaa;
+    opacity: 1;
+}
+
+
+.detalhes-evento .detalhe-evento-comentarios form input:focus,
+.detalhes-evento .detalhe-evento-comentarios form textarea:focus {
+    border-bottom-color: #bd2949;
+}
+
+
+.detalhes-evento .detalhe-evento-comentarios form button {
+    display: flex;
+    flex: 0 0 22px;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 22px;
+    min-height: 26px;
+    padding: 0;
+
+    border: none;
+    border-radius: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+
+.detalhes-evento .detalhe-evento-comentarios form button img {
+    display: block;
+
+    width: 16px;
+    height: 16px;
+
+    object-fit: contain;
+}
+
+
+.detalhes-evento .detalhe-evento-comentarios form button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+.detalhes-evento .detalhe-evento-comentarios article {
+    margin-bottom: 24px;
+    padding-left: 10px;
+}
+
+.detalhes-evento .detalhe-evento-comentarios article p:first-child {
+    margin: 0 0 5px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.detalhes-evento .detalhe-evento-comentarios article p:last-child {
+    margin: 0;
+
+    font-size: 11px;
+    line-height: 1.6;
+
+    overflow-wrap: anywhere;
+}
+
+
+.detalhes-evento .detalhe-evento-mensagem {
+    margin: 12px 0;
+
+    font-size: 12px;
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+
+.detalhes-evento .visually-hidden {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    padding: 0;
+    margin: -1px;
+
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Mensagens de erro */
+
+.detalhes-evento > [role="alert"] {
+    grid-column: 1 / -1;
+
+    margin: 0 0 16px;
+
+    color: #bd2949;
+    font-size: 13px;
+}
+
+/* ========================================
+   NOTEBOOKS E TELAS MENORES
+======================================== */
+
+@media (max-width: 700px) {
+    .detalhes-evento {
+        width: calc(100% - 32px);
+
+        margin: 18px auto 40px;
+
+        grid-template-columns: minmax(0, 1fr);
+        column-gap: 0;
+        row-gap: 24px;
+    }
+
+    .detalhes-evento .banner-evento {
+        height: clamp(140px, 30vw, 250px);
+    }
+
+    .detalhes-evento .titulo-evento {
+        margin: -14px 0 0;
+
+        font-size: clamp(26px, 5vw, 36px);
+    }
+
+    .detalhes-evento .conteudo-evento,
+    .detalhes-evento .informacoes-principais {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .detalhes-evento .abas-evento {
+        gap: 6px;
+        margin-bottom: 18px;
+    }
+
+    .detalhes-evento .abas-evento button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .detalhes-evento .descricao-evento {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .detalhes-evento .informacoes-principais {
+        padding-top: 0;
+    }
+
+    .detalhes-evento .informacoes-principais h2 {
+        margin-bottom: 18px;
+        font-size: 12px;
+    }
+
+    .detalhes-evento .informacao-item {
+        margin-bottom: 16px;
+        font-size: 12px;
+    }
+
+    .detalhes-evento .informacoes-principais button {
+        max-width: 320px;
+    }
+
+    .detalhes-evento .detalhe-evento-comentarios form {
+        gap: 8px;
+        margin: 20px 0 30px;
+    }
+}
+
+
+@media (max-width: 380px) {
+    .detalhes-evento {
+        width: calc(100% - 24px);
+    }
+
+    .detalhes-evento .abas-evento {
+        gap: 2px;
+    }
+
+    .detalhes-evento .abas-evento button {
+        padding: 6px 9px;
+        font-size: 11px;
+    }
+
+    .detalhes-evento .titulo-evento {
+        font-size: 25px;
+    }
+}

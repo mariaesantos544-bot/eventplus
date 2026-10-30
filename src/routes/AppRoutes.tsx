@@ -7,6 +7,7 @@ import DetalhesEvento from "../pages/DetalhesEvento/DetalhesEvento";
 import Login from "../pages/Login/Login";
 import Usuarios from "../pages/Usuarios/Usuarios";
 import TipoEvento from "../pages/TipoEvento/TipoEvento";
+import TipoUsuario from "../pages/TipoUsuario/TipoUsuario";
 import CadastroEvento from "../pages/CadastroEvento/CadastroEvento";
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -27,6 +28,18 @@ function AppRoutes() {
                 </ProtectedRoute>
             } />
 
+            <Route path="/tipoEvento" element={
+                <ProtectedRoute role="administrador">
+                    <TipoEvento />
+                </ProtectedRoute>
+            } />
+
+            <Route path="/tipoUsuario" element={
+                <ProtectedRoute role="administrador">
+                    <TipoUsuario />
+                </ProtectedRoute>
+            } />
+
             <Route path="/cadastroEvento" element={
                 <ProtectedRoute role="organizador">
                     <CadastroEvento />
@@ -35,7 +48,7 @@ function AppRoutes() {
 
             <Route path="*" element={<Navigate to="/home" replace />} />
         </Routes>
-    )
+    );
 }
 
 export default AppRoutes;

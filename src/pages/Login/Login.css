@@ -1,0 +1,186 @@
+
+* {
+    box-sizing: border-box;
+}
+
+.login-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 40px 20px;
+}
+
+.login-container {
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-logo {
+    display: block;
+    width: 300px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 75px;
+}
+
+.login-form {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-campo {
+    width: 350px;
+    height: 55px;
+    margin-bottom: 25px;
+}
+
+.login-campo input {
+    width: 100%;
+    height: 55px;
+    padding: 8px 5px;
+    border: none;
+    border-bottom: 1px solid #999999;
+    border-radius: 0;
+    outline: none;
+    background: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    color: #333333;
+    box-shadow: none;
+}
+
+.login-campo input::placeholder {
+    color: #b5b5b5;
+    opacity: 1;
+}
+
+.login-campo input:focus {
+    border-bottom: 1px solid #b51d44;
+}
+
+.login-esqueceu {
+    align-self: flex-end;
+    margin-top: 5px;
+    margin-bottom: 35px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: #aaaaaa;
+    text-decoration: none;
+}
+
+.login-esqueceu:hover {
+    color: #b51d44;
+}
+
+.login-botao-container {
+    width: 350px;
+}
+
+.login-botao-container button {
+    width: 350px !important;
+    min-height: 45px !important;
+    height: 45px !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 3px !important;
+    background-color: #b51d44 !important;
+    color: #ffffff !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 16px !important;
+    cursor: pointer;
+}
+
+.login-botao-container button:hover {
+    background-color: #921638 !important;
+}
+
+.login-botao-container button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.login-erro {
+    width: 350px;
+    margin: 0 0 15px;
+    color: #b51d44;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    text-align: center;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Monitores maiores */
+@media (min-width: 1440px) {
+    .login-container {
+        width: 480px;
+    }
+
+    .login-logo {
+        width: 340px;
+        margin-bottom: 85px;
+    }
+
+    .login-form {
+        width: 400px;
+    }
+
+    .login-campo,
+    .login-botao-container,
+    .login-botao-container button {
+        width: 400px !important;
+    }
+
+    .login-campo,
+    .login-campo input {
+        height: 60px;
+    }
+
+    .login-botao-container button {
+        height: 50px !important;
+    }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+    .login-page {
+        padding: 40px 20px;
+    }
+
+    .login-container {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .login-logo {
+        width: 220px;
+        margin-bottom: 55px;
+    }
+
+    .login-form {
+        width: 100%;
+    }
+
+    .login-campo,
+    .login-botao-container,
+    .login-botao-container button {
+        width: 100% !important;
+    }
+}

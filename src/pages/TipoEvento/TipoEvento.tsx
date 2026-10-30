@@ -1,3 +1,4 @@
+
 import {
     useCallback,
     useEffect,
@@ -11,6 +12,7 @@ import Footer from "../../Components/footer/Footer";
 import Campo from "../../Components/campo/Campo";
 import { Botao } from "../../Components/botao/Botao";
 import ModalConfirmacao from "../../Components/modalConfirmacao/ModalConfirmacao";
+
 import lapis from "../../assets/Icons/lapis.svg";
 import lixeira from "../../assets/Icons/lixeira.svg";
 import ilustracao from "../../assets/Vector.png";
@@ -32,10 +34,13 @@ function TipoEvento() {
     const [mensagem, setMensagem] = useState("");
     const [erro, setErro] = useState(false);
 
-    const carregar = useCallback(async () => {
+    const carregar = useCallback(async (limparMensagem = true) => {
         setCarregando(true);
-        setMensagem("");
-        setErro(false);
+
+        if (limparMensagem) {
+            setMensagem("");
+            setErro(false);
+        }
 
         try {
             const dados = await tipoEventoService.listar();
@@ -73,22 +78,24 @@ function TipoEvento() {
         setErro(false);
 
         try {
-            const payload = {
-                tituloTipoEvento: titulo.trim()
-            };
-
             if (idEmEdicao) {
-                await tipoEventoService.atualizar(idEmEdicao, payload);
+                await tipoEventoService.atualizar(idEmEdicao, titulo.trim());
+
+                await carregar(false);
+
                 setMensagem("Tipo de evento atualizado com sucesso.");
             } else {
-                await tipoEventoService.cadastrar(payload);
+                await tipoEventoService.cadastrar(titulo.trim());
+
+                await carregar(false);
+
                 setMensagem("Tipo de evento cadastrado com sucesso.");
             }
 
             setTitulo("");
             setIdEmEdicao(null);
+            setErro(false);
 
-            await carregar();
         } catch (error) {
             setMensagem(getApiErrorMessage(error));
             setErro(true);
@@ -125,9 +132,12 @@ function TipoEvento() {
             }
 
             setSelecionado(null);
-            setMensagem("Tipo de evento excluído com sucesso.");
 
-            await carregar();
+            await carregar(false);
+
+            setMensagem("Tipo de evento excluído com sucesso.");
+            setErro(false);
+
         } catch (error) {
             setMensagem(getApiErrorMessage(error));
             setErro(true);

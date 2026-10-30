@@ -1,4 +1,6 @@
 
+import "./CadastroEvento.css";
+
 import {
     useCallback,
     useEffect,
@@ -28,6 +30,8 @@ import Campo from "../../Components/campo/Campo";
 import { Botao } from "../../Components/botao/Botao";
 import CardEvento from "../../Components/cardEvento/CardEvento";
 import ModalConfirmacao from "../../Components/modalConfirmacao/ModalConfirmacao";
+
+import logoAdminEvento from "../../assets/logo-adminEvento.png";
 
 interface FormularioEvento {
     nome: string;
@@ -180,7 +184,6 @@ function CadastroEvento() {
         }
     }
 
-
     return (
         <>
             <Header />
@@ -190,8 +193,13 @@ function CadastroEvento() {
                     <p>Cadastre novos eventos ou selecione um item da lista para editar ou excluir</p>
                 </section>
 
-                <div>
-                    <img src="" alt="" />
+                <div className="cadastro-evento-conteudo">
+                    <img
+                        src={logoAdminEvento}
+                        alt="Ilustração de administração de eventos"
+                        className="cadastro-evento-ilustracao"
+                    />
+
                     <form onSubmit={salvar}>
                         <h2>{idEmedicao ? "Editar Evento" : "Cadastrar Evento"}</h2>
                         <div>

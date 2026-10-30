@@ -5,7 +5,9 @@
 }
 
 .usuarios-cadastro {
-    padding: 30px 8% 60px;
+    width: min(1200px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 30px 0 60px;
     background: #ffffff;
     display: flex;
     flex-direction: column;
@@ -149,14 +151,13 @@
 .usuarios-lista-section {
     width: 100%;
     box-sizing: border-box;
-    padding: 32px 8% 45px;
+    padding: 32px 0 45px;
     background-color: #b51d44;
     color: #ffffff;
 }
 
 .usuarios-lista-container {
-    width: 100%;
-    max-width: 1000px;
+    width: min(1200px, calc(100% - 48px));
     margin: 0 auto;
     display: flex;
     flex-direction: column;

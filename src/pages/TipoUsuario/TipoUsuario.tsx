@@ -15,7 +15,7 @@ import ModalConfirmacao from "../../Components/modalConfirmacao/ModalConfirmacao
 
 import lapis from "../../assets/Icons/lapis.svg";
 import lixeira from "../../assets/Icons/lixeira.svg";
-import ilustracao from "../../assets/Vector.png";
+import ilustracao from "../../assets/logo-tipousuario.png";
 
 import { tipoUsuarioService } from "../../services/eventPlusservice";
 import { getApiErrorMessage } from "../../services/api";

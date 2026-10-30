@@ -1,0 +1,324 @@
+/* ================================
+   PÁGINA DE CADASTRO DE EVENTOS
+================================ */
+
+.cadastro-evento-page {
+    width: min(1200px, calc(100% - 48px));
+    min-height: 80vh;
+    margin: 0 auto;
+    padding: 55px 0 80px;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    color: #17143f;
+}
+
+/* ================================
+   TÍTULO DA PÁGINA
+================================ */
+
+.cadastro-evento-page > section:first-child {
+    text-align: center;
+    margin-bottom: 65px;
+}
+
+.cadastro-evento-page > section:first-child h1 {
+    font-size: 27px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    position: relative;
+    display: inline-block;
+}
+
+.cadastro-evento-page > section:first-child h1::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #b51d44;
+    margin-top: 10px;
+}
+
+.cadastro-evento-page > section:first-child p {
+    font-size: 14px;
+    color: #777;
+    margin-top: 15px;
+}
+
+/* ================================
+   ÁREA DO FORMULÁRIO
+================================ */
+
+.cadastro-evento-page > div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+    margin-bottom: 85px;
+}
+
+/* Imagem ilustrativa */
+
+.cadastro-evento-page > div > img {
+    width: 42%;
+    max-width: 430px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 35px;
+}
+
+/* Esconde a imagem enquanto o src estiver vazio */
+
+.cadastro-evento-page > div > img[src=""] {
+    display: none;
+}
+
+/* Formulário */
+
+.cadastro-evento-page form {
+    width: 58%;
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.cadastro-evento-page form h2 {
+    display: none;
+}
+
+/* Campos em linha */
+
+.cadastro-evento-page form > div {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+}
+
+.cadastro-evento-page form > div:first-of-type > * {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Inputs e textarea */
+
+.cadastro-evento-page form input:not([type="file"]),
+.cadastro-evento-page form textarea,
+.cadastro-evento-page form select {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #999;
+    border-radius: 0;
+    background: transparent;
+    padding: 12px 5px;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    color: #17143f;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.cadastro-evento-page form input:focus,
+.cadastro-evento-page form textarea:focus,
+.cadastro-evento-page form select:focus {
+    border-bottom: 2px solid #b51d44;
+}
+
+/* Descrição */
+
+.cadastro-evento-page form textarea {
+    min-height: 55px;
+    resize: vertical;
+}
+
+/* Seleção de tipo e instituição */
+
+.cadastro-evento-page form > div:nth-of-type(2) {
+    gap: 25px;
+}
+
+.cadastro-evento-page form > div:nth-of-type(2) label {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Campo de imagem */
+
+.cadastro-evento-page form > label[for="foto-evento"] {
+    width: 100%;
+    min-height: 35px;
+    border-bottom: 1px solid #999;
+    color: #999;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 8px 5px;
+    box-sizing: border-box;
+}
+
+.cadastro-evento-page form > label[for="foto-evento"]:hover {
+    color: #b51d44;
+}
+
+.cadastro-evento-page form input[type="file"] {
+    display: none;
+}
+
+/* Botão cadastrar */
+
+.cadastro-evento-page form button {
+    width: 100%;
+    min-height: 43px;
+    border: none;
+    border-radius: 4px;
+    background-color: #b51d44;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cadastro-evento-page form button:hover {
+    background-color: #821b47;
+}
+
+.cadastro-evento-page form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Cancelar edição */
+
+.cadastro-evento-page form .cadastro-evento-cancelar {
+    background-color: #777;
+}
+
+/* Mensagens */
+
+.cadastro-evento-page form p[role="status"] {
+    font-size: 13px;
+    color: #b51d44;
+}
+
+/* ================================
+   EVENTOS CADASTRADOS
+================================ */
+
+.cadastro-evento-page > section:last-of-type {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.cadastro-evento-page > section:last-of-type h2 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 45px;
+}
+
+.cadastro-evento-page > section:last-of-type h2::after {
+    content: "";
+    display: block;
+    width: 75px;
+    height: 2px;
+    background-color: #b51d44;
+    margin: 12px auto 0;
+}
+
+.cadastro-evento-page > section:last-of-type > div {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 45px;
+    width: 100%;
+}
+
+/* Cards */
+
+.cadastro-evento-page .home-evento-card {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #b51d44;
+    border-radius: 5px;
+    background-color: #fff;
+    box-sizing: border-box;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cadastro-evento-page .home-evento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
+}
+
+.cadastro-evento-page .home-evento-card > img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
+
+.cadastro-evento-page .home-evento-card-info {
+    padding: 18px;
+}
+
+.cadastro-evento-page .home-evento-card-info h3 {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.cadastro-evento-page .home-evento-card-info p {
+    font-size: 13px;
+    color: #777;
+    line-height: 1.6;
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================ */
+
+@media (max-width: 900px) {
+    .cadastro-evento-page {
+        padding: 40px 5%;
+    }
+
+    .cadastro-evento-page > div {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .cadastro-evento-page > div > img {
+        width: 100%;
+    }
+
+    .cadastro-evento-page form {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .cadastro-evento-page > section:last-of-type > div {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 25px;
+    }
+}
+
+@media (max-width: 550px) {
+    .cadastro-evento-page {
+        padding: 30px 20px;
+    }
+
+    .cadastro-evento-page form > div {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .cadastro-evento-page > section:last-of-type > div {
+        grid-template-columns: 1fr;
+    }
+
+    .cadastro-evento-page > section:first-child h1 {
+        font-size: 21px;
+    }
+}

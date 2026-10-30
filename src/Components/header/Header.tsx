@@ -1,3 +1,4 @@
+
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import logoEvent from "../../assets/logo-event.svg";
@@ -18,7 +19,7 @@ function Header() {
 
     function sair() {
         logout();
-        navigate("/Login");
+        navigate("/login");
     }
 
     return (
@@ -30,28 +31,43 @@ function Header() {
 
                 <nav>
                     <NavLink to="/home">Home</NavLink>
+
                     <NavLink to="/eventos">Eventos</NavLink>
-                    {administrador ?
-                        <NavLink to="/usuarios">Usuarios</NavLink>
-                        : null}
-                    {organizador ?
-                        <NavLink to="/CadastroEvento">Cadastro de Eventos</NavLink>
-                        : null
-                    }
+
+                    {administrador ? (
+                        <>
+                            <NavLink to="/usuarios">Usuários</NavLink>
+
+                            <NavLink to="/tipoEvento">
+                                Tipo de Evento
+                            </NavLink>
+
+                            <NavLink to="/tipoUsuario">
+                                Tipo de Usuário
+                            </NavLink>
+                        </>
+                    ) : null}
+
+                    {organizador ? (
+                        <NavLink to="/cadastroEvento">
+                            Cadastro de Eventos
+                        </NavLink>
+                    ) : null}
+
                     <Link to="/home#contato">Contatos</Link>
                 </nav>
 
-                {autenticado ?
+                {autenticado ? (
                     <>
                         <Link to="/conta">Minha Conta</Link>
                         <Link onClick={sair} to="/login">Sair</Link>
                     </>
-                    :
+                ) : (
                     <Link to="/login">Entrar</Link>
-                }
+                )}
             </div>
         </header>
-    )
+    );
 }
 
 export default Header;
