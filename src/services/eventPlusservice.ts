@@ -18,15 +18,20 @@ import type {
     UsuarioPayload
 } from "../types/api";
 
-// Converter os dados do evento para FormData
 function eventoFormData(payload: EventoPayload) {
     const formData = new FormData();
 
-    formData.append("Nome", payload.nome);
-    formData.append("Descricao", payload.descricao);
+    formData.append("NomeEvento", payload.nome.trim());
+    formData.append("Descricao", payload.descricao.trim());
     formData.append("DataEvento", payload.dataEvento);
-    formData.append("IdTipoEvento", payload.idTipoEvento || "");
-    formData.append("IdInstituicao", payload.idInstituicao || "");
+
+    if (payload.idTipoEvento) {
+        formData.append("IdTipoEvento", payload.idTipoEvento);
+    }
+
+    if (payload.idInstituicao) {
+        formData.append("IdInstituicao", payload.idInstituicao);
+    }
 
     if (payload.arquivoImagem) {
         formData.append("ArquivoImagem", payload.arquivoImagem);
@@ -39,7 +44,6 @@ function eventoFormData(payload: EventoPayload) {
     return formData;
 }
 
-// Acompanhar o progresso do upload
 function progressoUpload(onProgress?: (porcentagem: number) => void) {
     return {
         onUploadProgress: (progress: {
@@ -55,7 +59,6 @@ function progressoUpload(onProgress?: (porcentagem: number) => void) {
     };
 }
 
-// Autenticação
 export const authService = {
     async login(payload: LoginPayload) {
         const { data } = await axiosInstance.post<LoginResponse>(
@@ -67,11 +70,9 @@ export const authService = {
     }
 };
 
-// Eventos
 export const eventoService = {
     async listar() {
         const { data } = await axiosInstance.get<Evento[]>("Evento");
-
         return data;
     },
 
@@ -84,10 +85,7 @@ export const eventoService = {
     },
 
     async buscar(id: string) {
-        const { data } = await axiosInstance.get<Evento>(
-            `Evento/${id}`
-        );
-
+        const { data } = await axiosInstance.get<Evento>(`Evento/${id}`);
         return data;
     },
 
@@ -109,11 +107,13 @@ export const eventoService = {
         payload: EventoPayload,
         onProgress?: (porcentagem: number) => void
     ) {
-        await axiosInstance.put(
+        const { data } = await axiosInstance.put<Evento>(
             `Evento/${id}`,
             eventoFormData(payload),
             progressoUpload(onProgress)
         );
+
+        return data;
     },
 
     async excluir(id: string) {
@@ -121,11 +121,11 @@ export const eventoService = {
     }
 };
 
-// Comentários
+
 export const comentarioService = {
     async listarPorEvento(idEvento: string) {
         const { data } = await axiosInstance.get<Comentario[]>(
-            `Comentario/evento/${idEvento}`
+            `Comentario/ListarPorEvento/${idEvento}`
         );
 
         return data;
@@ -140,7 +140,7 @@ export const comentarioService = {
     }
 };
 
-// Presenças
+
 export const presencaService = {
     async listarPorUsuario(idUsuario: string) {
         const { data } = await axiosInstance.get<Presenca[]>(
@@ -164,19 +164,14 @@ export const presencaService = {
     }
 };
 
-// Usuários
 export const usuarioService = {
     async listar() {
         const { data } = await axiosInstance.get<Usuario[]>("Usuario");
-
         return data;
     },
 
     async buscar(id: string) {
-        const { data } = await axiosInstance.get<Usuario>(
-            `Usuario/${id}`
-        );
-
+        const { data } = await axiosInstance.get<Usuario>(`Usuario/${id}`);
         return data;
     },
 
@@ -190,7 +185,12 @@ export const usuarioService = {
     },
 
     async atualizar(id: string, payload: UsuarioPayload) {
-        await axiosInstance.put(`Usuario/${id}`, payload);
+        const { data } = await axiosInstance.put<Usuario>(
+            `Usuario/${id}`,
+            payload
+        );
+
+        return data;
     },
 
     async excluir(id: string) {
@@ -198,29 +198,33 @@ export const usuarioService = {
     }
 };
 
-// Serviço genérico para tipos
-function tipoService<T>(endpoint: string) {
+function tipoService<T>(endpoint: string, campoTitulo: string) {
     return {
         async listar() {
             const { data } = await axiosInstance.get<T[]>(endpoint);
-
             return data;
         },
 
         async cadastrar(titulo: string) {
             const { data } = await axiosInstance.post<T>(
                 endpoint,
-                { titulo: titulo.trim() }
+                {
+                    [campoTitulo]: titulo.trim()
+                }
             );
 
             return data;
         },
 
         async atualizar(id: string, titulo: string) {
-            await axiosInstance.put(
+            const { data } = await axiosInstance.put<T>(
                 `${endpoint}/${id}`,
-                { titulo: titulo.trim() }
+                {
+                    [campoTitulo]: titulo.trim()
+                }
             );
+
+            return data;
         },
 
         async excluir(id: string) {
@@ -229,13 +233,14 @@ function tipoService<T>(endpoint: string) {
     };
 }
 
-// Tipos de usuário e evento
 export const tipoUsuarioService = tipoService<TipoUsuario>(
-    "TipoUsuario"
+    "TipoUsuario",
+    "tituloTipoUsuario"
 );
 
 export const tipoEventoService = tipoService<TipoEvento>(
-    "TipoEvento"
+    "TipoEvento",
+    "tituloTipoEvento"
 );
 
 // Instituições

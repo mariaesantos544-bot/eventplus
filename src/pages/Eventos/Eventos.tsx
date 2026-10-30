@@ -50,7 +50,7 @@ function Eventos() {
         }
 
         const categoria =
-            evento.idTipoEventoNavigation?.titulo ?? "";
+            evento.idTipoEventoNavigation?.tituloTipoEvento ?? "";
 
         return categoria.trim().toLowerCase() ===
             categoriaSelecionada.trim().toLowerCase();
@@ -109,7 +109,7 @@ function Eventos() {
                                     imagem={evento.imagemUrl}
                                     categoria={
                                         evento.idTipoEventoNavigation
-                                            ?.titulo ??
+                                            ?.tituloTipoEvento ??
                                         "Sem categoria"
                                     }
                                     titulo={evento.nome}

@@ -31,7 +31,7 @@ export interface Evento {
     dataEvento: string;
     imagemUrl?: string | null;
     idTipoEvento?: string | null;
-    idTipoInstituicao?: string | null;
+    idInstituicao?: string | null;
     idTipoEventoNavigation?: TipoEvento | null;
     idInstituicaoNavigation?: instituicao | null;
 }

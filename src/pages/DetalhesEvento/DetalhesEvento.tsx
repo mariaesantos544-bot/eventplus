@@ -342,7 +342,7 @@ function DetalhesEvento() {
                     <div>
                         <img src={filtro} alt="" />
                         <span>
-                            {evento?.idTipoEventoNavigation?.titulo}
+                            {evento?.idTipoEventoNavigation?.tituloTipoEvento}
                         </span>
                     </div>
 

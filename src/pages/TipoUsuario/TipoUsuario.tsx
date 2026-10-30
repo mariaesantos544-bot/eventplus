@@ -1,3 +1,4 @@
+
 import {
     useCallback,
     useEffect,
@@ -11,6 +12,7 @@ import Footer from "../../Components/footer/Footer";
 import Campo from "../../Components/campo/Campo";
 import { Botao } from "../../Components/botao/Botao";
 import ModalConfirmacao from "../../Components/modalConfirmacao/ModalConfirmacao";
+
 import lapis from "../../assets/Icons/lapis.svg";
 import lixeira from "../../assets/Icons/lixeira.svg";
 import ilustracao from "../../assets/Vector.png";
@@ -32,10 +34,13 @@ function TipoUsuario() {
     const [mensagem, setMensagem] = useState("");
     const [erro, setErro] = useState(false);
 
-    const carregar = useCallback(async () => {
+    const carregar = useCallback(async (limparMensagem = true) => {
         setCarregando(true);
-        setMensagem("");
-        setErro(false);
+
+        if (limparMensagem) {
+            setMensagem("");
+            setErro(false);
+        }
 
         try {
             const dados = await tipoUsuarioService.listar();
@@ -73,22 +78,24 @@ function TipoUsuario() {
         setErro(false);
 
         try {
-            const payload = {
-                tituloTipoUsuario: titulo.trim()
-            };
-
             if (idEmEdicao) {
-                await tipoUsuarioService.atualizar(idEmEdicao, payload);
+                await tipoUsuarioService.atualizar(idEmEdicao, titulo);
+
+                await carregar(false);
+
                 setMensagem("Tipo de usuário atualizado com sucesso.");
             } else {
-                await tipoUsuarioService.cadastrar(payload);
+                await tipoUsuarioService.cadastrar(titulo);
+
+                await carregar(false);
+
                 setMensagem("Tipo de usuário cadastrado com sucesso.");
             }
 
             setTitulo("");
             setIdEmEdicao(null);
+            setErro(false);
 
-            await carregar();
         } catch (error) {
             setMensagem(getApiErrorMessage(error));
             setErro(true);
@@ -125,9 +132,12 @@ function TipoUsuario() {
             }
 
             setSelecionado(null);
-            setMensagem("Tipo de usuário excluído com sucesso.");
 
-            await carregar();
+            await carregar(false);
+
+            setMensagem("Tipo de usuário excluído com sucesso.");
+            setErro(false);
+
         } catch (error) {
             setMensagem(getApiErrorMessage(error));
             setErro(true);
@@ -271,15 +281,10 @@ function TipoUsuario() {
                                                         type="button"
                                                         className="tipo-usuario-acao"
                                                         aria-label={`Excluir ${item.tituloTipoUsuario}`}
-                                                        onClick={() =>
-                                                            setSelecionado(item)
-                                                        }
+                                                        onClick={() => setSelecionado(item)}
                                                         disabled={enviando}
                                                     >
-                                                        <img
-                                                            src={lixeira}
-                                                            alt=""
-                                                        />
+                                                        <img src={lixeira} alt="" />
                                                     </button>
                                                 </td>
                                             </tr>

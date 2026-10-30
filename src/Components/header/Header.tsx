@@ -13,16 +13,12 @@ function Header() {
     const { autenticado, perfil, logout } = useAuth();
 
     const navigate = useNavigate();
-
     const administrador = perfilEhAdministrador(perfil);
     const organizador = perfilEhOrganizador(perfil);
-    console.log("Usuário autenticado:", autenticado);
-console.log("Perfil recebido:", perfil);
-console.log("É administrador:", administrador);
 
     function sair() {
         logout();
-        navigate("/login");
+        navigate("/Login");
     }
 
     return (
@@ -35,33 +31,27 @@ console.log("É administrador:", administrador);
                 <nav>
                     <NavLink to="/home">Home</NavLink>
                     <NavLink to="/eventos">Eventos</NavLink>
-
-                    {administrador && (
-                        <>
-                            <NavLink to="/usuarios">Usuários</NavLink>
-                            <NavLink to="/tipoevento">Cadastro</NavLink>
-                        </>
-                    )}
-
+                    {administrador ?
+                        <NavLink to="/usuarios">Usuarios</NavLink>
+                        : null}
+                    {organizador ?
+                        <NavLink to="/CadastroEvento">Cadastro de Eventos</NavLink>
+                        : null
+                    }
                     <Link to="/home#contato">Contatos</Link>
                 </nav>
 
-                {autenticado ? (
+                {autenticado ?
                     <>
-                        {organizador && (
-                            <Link to="/conta">Minha conta</Link>
-                        )}
-
-                        <button type="button" onClick={sair}>
-                            Sair
-                        </button>
+                        <Link to="/conta">Minha Conta</Link>
+                        <Link onClick={sair} to="/login">Sair</Link>
                     </>
-                ) : (
+                    :
                     <Link to="/login">Entrar</Link>
-                )}
+                }
             </div>
         </header>
-    );
+    )
 }
 
 export default Header;
